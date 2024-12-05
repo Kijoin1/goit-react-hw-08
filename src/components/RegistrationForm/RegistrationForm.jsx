@@ -5,7 +5,6 @@ import s from './RegistrationForm.module.css';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
-
   const onSubmit = (values, options) => {
     console.log('Submitted values:', values);
     dispatch(register(values));
