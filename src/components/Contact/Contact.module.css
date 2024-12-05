@@ -1,27 +1,54 @@
 .contact {
-    padding: 8px;
+    padding: 10px;
     display: flex;
-    width: 200px;
+    flex-direction: row;
+    width: 250px;
     justify-content: space-between;
     list-style-type: none;
     border: 1px solid black;
     border-radius: 10px;
-    gap: 20px;
-    align-items: center;}
+    gap: 15px;
+    align-items: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 .contact div {
     display: flex;
-    gap: 4px;
     flex-direction: column;
-    div {
+    gap: 6px;
+}
+
+.contact div div {
     display: flex;
+    align-items: center;
+    gap: 4px;
     flex-direction: row;
-    gap: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 150px;
+    p {
+    margin: 0;
     }
-    }
-.contact button{
-    height: 20px;
-    display: flex;
-    }
+}
+
+.contact button {
+    height: 25px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6b6b;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.contact button:hover {
+    background-color: #ff4c4c;
+}
+
 svg {
     width: 20px;
     height: 20px;

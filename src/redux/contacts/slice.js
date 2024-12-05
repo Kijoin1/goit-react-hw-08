@@ -1,7 +1,6 @@
-import { createSelector, createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addContactsThunk, deleteContactsThunk, fetchContacts } from "./operations";
-import { selectNameFilter } from '../filters/selectors';
-import { selectContacts } from './selectors';
+import { logout } from '../auth/operations';
 
 const initialState = {
   items: [],
@@ -24,6 +23,9 @@ const slice = createSlice({
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.items = action.payload;
       })
+      .addCase(logout.fulfilled, (state) => { 
+        state.items = []; 
+      })
       .addMatcher(isAnyOf(addContactsThunk.pending, deleteContactsThunk.pending, fetchContacts.pending), (state, action) => {
         state.loading = true;
         state.error = null;
@@ -34,12 +36,8 @@ const slice = createSlice({
       .addMatcher(isAnyOf(addContactsThunk.rejected, deleteContactsThunk.rejected, fetchContacts.rejected), (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      });
+      })
   },
 });
 
 export const contactsReducer = slice.reducer;
-
-export const selectFilteredContacts = createSelector([selectContacts, selectNameFilter], (contacts, filter) => {
-  return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
-});

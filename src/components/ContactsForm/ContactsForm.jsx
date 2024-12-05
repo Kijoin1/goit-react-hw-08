@@ -11,9 +11,9 @@ const ContactsForm = () => {
     options.resetForm();
   };
   return (
-    <div className={s.addFormWrapper}>
+    <div>
       <Formik initialValues={{ name: '', number: '' }} onSubmit={onSubmit}>
-        <Form>
+        <Form className={s.form}>
           <Field
             className={s.input}
             name="name"
